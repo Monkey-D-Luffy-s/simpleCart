@@ -2,10 +2,7 @@ import React, { useRef, forwardRef, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
 import CartItems from "./CartItems";
 
-const CartPage = forwardRef(function CartPage(
-  { products, handleCountChane },
-  ref
-) {
+const CartPage = forwardRef(function CartPage({}, ref) {
   const diaref = useRef();
 
   useImperativeHandle(ref, () => {
@@ -28,7 +25,7 @@ const CartPage = forwardRef(function CartPage(
           </form>
         </div>
         <div>
-          <CartItems products={products} handleCountChane={handleCountChane} />
+          <CartItems />
         </div>
       </div>
     </dialog>,
