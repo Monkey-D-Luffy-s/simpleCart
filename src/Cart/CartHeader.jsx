@@ -1,13 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import pngtree from "../assets/pngtree1.png";
 import CartPage from "./CartPage";
 import AddItem from "./AddProduct/AddItem";
+import { CartContext } from "./Store/CartContext";
 
-function CartHeader({ count }) {
+function CartHeader() {
   const diaref = useRef();
   function handlopenCart() {
     diaref.current.open();
   }
+  const { Items } = useContext(CartContext);
   return (
     <>
       <CartPage ref={diaref} />
@@ -24,7 +26,7 @@ function CartHeader({ count }) {
               className="px-6  py-1 ml-14 mt-1 bg-zinc-600 text-zinc-300 hover:bg-zinc-500 hover:text-zinc-200 text-xl rounded-md"
               onClick={handlopenCart}
             >
-              Cart {count}
+              Cart {Items.length}
             </button>
           </p>
           <p>
