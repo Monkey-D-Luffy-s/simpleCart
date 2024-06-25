@@ -24,7 +24,7 @@ function CartHeader({ Cartitemslist, handleCountChane, count }) {
           </p>
           <p>
             <button
-              className="px-6  py-1 ml-14 mt-1 bg-zinc-600 text-zinc-300 hover:bg-inherit hover:text-zinc-200 text-xl rounded-md"
+              className="px-6  py-1 ml-14 mt-1 bg-zinc-700 text-zinc-300 hover:bg-zinc-500 hover:text-zinc-200 text-xl rounded-md"
               onClick={handlopenCart}
             >
               Cart {count}
