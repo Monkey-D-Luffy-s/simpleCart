@@ -3,10 +3,12 @@ import CartHeader from "./CartHeader";
 import Products from "./Products";
 import { ProductsList } from "./ProductsList";
 import CartPage from "./CartPage";
+import AddItem from "./AddProduct/AddItem";
 import { CartContext } from "./Store/CartContext";
 
 function CartHome() {
   const [cartlist, setCartList] = useState([]);
+  const [addItem, setAddItem] = useState(false);
 
   function handleAddToCart(id) {
     let existingItem = cartlist.filter((item) => item.id === id);
@@ -51,12 +53,18 @@ function CartHome() {
 
   return (
     <CartContext.Provider>
-      <CartHeader
-        Cartitemslist={cartlist}
-        count={cartlist.length}
-        handleCountChane={handleCountChane}
-      />
-      <Products handleAddToCart={handleAddToCart} />
+      {addItem ? (
+        <AddItem />
+      ) : (
+        <div>
+          <CartHeader
+            Cartitemslist={cartlist}
+            count={cartlist.length}
+            handleCountChane={handleCountChane}
+          />
+          <Products handleAddToCart={handleAddToCart} />
+        </div>
+      )}
     </CartContext.Provider>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import pngtree from "../assets/pngtree1.png";
 import CartPage from "./CartPage";
+import AddItem from "./AddProduct/AddItem";
 
 function CartHeader({ Cartitemslist, handleCountChane, count }) {
   const diaref = useRef();
@@ -24,10 +25,18 @@ function CartHeader({ Cartitemslist, handleCountChane, count }) {
           </p>
           <p>
             <button
-              className="px-6  py-1 ml-14 mt-1 bg-zinc-700 text-zinc-300 hover:bg-zinc-500 hover:text-zinc-200 text-xl rounded-md"
+              className="px-6  py-1 ml-14 mt-1 bg-zinc-600 text-zinc-300 hover:bg-zinc-500 hover:text-zinc-200 text-xl rounded-md"
               onClick={handlopenCart}
             >
               Cart {count}
+            </button>
+          </p>
+          <p>
+            <button
+              className="px-6  py-1 ml-14 mt-1 bg-zinc-600 text-zinc-300 hover:bg-zinc-500 hover:text-zinc-200 text-xl rounded-md"
+              onClick={handlopenCart}
+            >
+              Add Item
             </button>
           </p>
         </div>
