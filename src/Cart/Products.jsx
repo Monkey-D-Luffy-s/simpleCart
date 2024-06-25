@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ProductsList } from "./ProductsList.js";
+import { CartContext } from "./Store/CartContext.jsx";
 
-function Products({ handleAddToCart }) {
+function Products() {
+  const { handleAddToCart } = useContext(CartContext);
   return (
     <div className="flex justify-center">
       <ol className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

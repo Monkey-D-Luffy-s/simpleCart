@@ -3,18 +3,14 @@ import pngtree from "../assets/pngtree1.png";
 import CartPage from "./CartPage";
 import AddItem from "./AddProduct/AddItem";
 
-function CartHeader({ Cartitemslist, handleCountChane, count }) {
+function CartHeader({ count }) {
   const diaref = useRef();
   function handlopenCart() {
     diaref.current.open();
   }
   return (
     <>
-      <CartPage
-        products={Cartitemslist}
-        ref={diaref}
-        handleCountChane={handleCountChane}
-      />
+      <CartPage ref={diaref} />
       <div className="fixed w-full">
         <div className="flex justify-center gap-4 items-center h-20 bg-gradient-to-r from-purple-600 to-blue-600">
           <p>

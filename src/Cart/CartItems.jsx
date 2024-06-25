@@ -1,15 +1,14 @@
 import React from "react";
+import { CartContext } from "./Store/CartContext";
+import { useContext } from "react";
 
-function CartItems({ products, handleCountChane }) {
-  let Total = 0;
-  for (let i = 0; i < products.length; i++) {
-    Total = Total + products[i].Price * products[i].count;
-  }
-  console.log(Total);
+function CartItems() {
+  const { Items, handleCountChane } = useContext(CartContext);
+  let Total = Items.reduce((acc, item) => acc + item.Price * item.count, 0);
   return (
     <div>
       <ul>
-        {products.map((item) => (
+        {Items.map((item) => (
           <li key={item.id} className="py-2">
             <div className="flex justify-between">
               <p className=" px-6 py-1 flex gap-2 text-zinc-200 text-xl">

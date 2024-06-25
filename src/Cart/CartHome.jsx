@@ -51,18 +51,20 @@ function CartHome() {
     }
   }
 
+  const cart = {
+    Items: cartlist,
+    handleCountChane: handleCountChane,
+    handleAddToCart: handleAddToCart,
+  };
+
   return (
-    <CartContext.Provider>
+    <CartContext.Provider value={cart}>
       {addItem ? (
         <AddItem />
       ) : (
         <div>
-          <CartHeader
-            Cartitemslist={cartlist}
-            count={cartlist.length}
-            handleCountChane={handleCountChane}
-          />
-          <Products handleAddToCart={handleAddToCart} />
+          <CartHeader count={cartlist.length} />
+          <Products />
         </div>
       )}
     </CartContext.Provider>
