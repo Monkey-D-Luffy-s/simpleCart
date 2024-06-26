@@ -9,47 +9,43 @@ export const CartContext = createContext({
 
 export function CartContextLogic({ children }) {
   const [cartlist, setCartList] = useState([]);
-  const [addItem, setAddItem] = useState(false);
 
   function handleAddToCart(id) {
-    let existingItem = cartlist.filter((item) => item.id === id);
-    if (existingItem.length > 0) {
-      const ItemAdd = cartlist.find((item) => item.id === id);
-      ItemAdd.count += 1;
-      setCartList((preItem) => {
-        return [...preItem];
-      });
-    } else {
-      const newprod = ProductsList.find((item) => item.id === id);
-      console.log("newprod", newprod);
-      setCartList((prevItems) => {
-        return [...prevItems, newprod];
-      });
-    }
+    setCartList((prevItmes) => {
+      const UpdatedItems = [...prevItmes];
+      const existingItemIndex = UpdatedItems.findIndex(
+        (item) => item.id === id
+      );
+      if (UpdatedItems[existingItemIndex]) {
+        const UpdateItem = UpdatedItems[existingItemIndex];
+        UpdateItem.count = UpdateItem.count + 1;
+        UpdatedItems[existingItemIndex] = UpdateItem;
+      } else {
+        const NewItem = ProductsList.find((item) => item.id === id);
+        UpdatedItems.push(NewItem);
+      }
+      return UpdatedItems;
+    });
   }
 
   function handleCountChane(op, id) {
-    if (op == "+") {
-      const ItemAdd = cartlist.find((item) => item.id === id);
-      ItemAdd.count += 1;
-      setCartList((preItem) => {
-        return [...preItem];
-      });
-    } else if (op == "-") {
-      const ItemAdd = cartlist.find((item) => item.id === id);
-      ItemAdd.count -= 1;
-      if (ItemAdd.count <= 0) {
-        const updatedList = cartlist.filter((item) => item.id !== id);
-        setCartList((prevList) => {
-          return [...updatedList];
-        });
-        console.log(updatedList);
-      } else {
-        setCartList((preItem) => {
-          return [...preItem];
-        });
+    setCartList((prevItems) => {
+      const UpdateItems = [...prevItems];
+      const existingItemIndex = UpdateItems.findIndex((item) => item.id === id);
+      const UpdateItem = UpdateItems[existingItemIndex];
+      if (op == "+") {
+        UpdateItem.count++;
+      } else if (op == "-") {
+        console.log("count", UpdateItem.count);
+        UpdateItem.count--;
+        if (UpdateItem.count <= 0) {
+          UpdateItems.pop(existingItemIndex);
+          return UpdateItems;
+        }
       }
-    }
+      UpdateItems[existingItemIndex] = UpdateItem;
+      return UpdateItems;
+    });
   }
 
   const cart = {
