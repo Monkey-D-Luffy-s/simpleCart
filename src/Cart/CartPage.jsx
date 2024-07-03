@@ -18,7 +18,7 @@ const CartPage = forwardRef(function CartPage({}, ref) {
       <div className="flex flex-col gap-4">
         <div className="flex justify-between">
           <p className="px-2 ml-4 text-2xl font-serif text-zinc-300">
-            Cart Items List of Items.
+            Cart Items
           </p>
           <form method="dialog">
             <button className="px-3 py-1 mr-10 hover:bg-zinc-400">X</button>
