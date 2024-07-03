@@ -13,6 +13,8 @@ const CartPage = forwardRef(function CartPage({}, ref) {
     };
   });
 
+  console.log("change by anatolii");
+
   return createPortal(
     <dialog ref={diaref} className="bg-zinc-600 mt-10 pt-5 w-[60%] rounded-md">
       <div className="flex flex-col gap-4">
